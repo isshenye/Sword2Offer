@@ -1,1 +1,44 @@
+package day2;
+
+public class replaceBlankWithother {
+	public static void main(String[] args) {
+		String line="You Are Happy.";
+		char[] charLine=line.toCharArray();
+		System.out.println(change(charLine));
+	}
+
+	private static String change(char[] line) {
+		int count=0;
+		for (int i = 0; i < line.length; i++) {
+			if(line[i]==' ') {
+				count++;
+			}
+		}
+		
+		if(count==0) {
+			return null;
+		}
+		
+		char[] temp=new char[line.length+2*count];
+		
+		int i=line.length-1;
+		int j=line.length+count*2-1;
+		
+		while(i>=0) {
+			if(line[i]==' ') {
+				temp[j]='0';
+				temp[j-1]='2';
+				temp[j-2]='%';
+				j=j-3;
+			}else {
+				temp[j]=line[i];
+				j--;
+			}
+			i--;
+		}
+		
+		return new String(temp);
+		
+	}
+}
 
